@@ -1,0 +1,20 @@
+{
+  "name": "cls",
+  "version": "1.0.0",
+  "description": "d",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.9.0",
+    "@tensorflow/tfjs-node": "^3.9.0",
+    "axios": "^0.21.4",
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
+    "nsfwjs": "^2.4.1"
+  }
+}
