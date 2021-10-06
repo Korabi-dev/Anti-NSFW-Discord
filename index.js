@@ -15,8 +15,10 @@ async function isnsfw(url) {
   image.dispose()
   predictions.map((pr) => {
     pr.probability = Math.round(pr.probability * 100)
-    if(pr.className == "Hentai" && pr.probability > 30) r = true
-    if(pr.className == "Porn" && pr.probability > 30) r = true
+    console.log(pr.className, pr.probability)
+    if(pr.className == "Hentai" && pr.probability > 35) r = true
+    if(pr.className == "Porn" && pr.probability > 35) r = true
+    if(pr.className == "Sexy" && pr.probability > 35) r = true
   })
   return r
 }
@@ -24,12 +26,11 @@ async function isnsfw(url) {
 client.on("messageCreate", async(message) => {
     if(!message.attachments || message.author.bot == true || message.channel.nsfw == true) return;
 message.attachments.map(async(attachment) => {
-    if(attachment.contentType.toLowerCase().startsWith("image")){
         if(await isnsfw(attachment.url) == true){
             await message.delete()
             message.channel.send({embeds: [new discord.MessageEmbed().setTitle("No nsfw here").setDescription(`${message.author} you can NOT send nsfw here.`).setColor("DARK_RED")]})
         } 
-    }
+
 })
 })
 
